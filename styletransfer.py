@@ -1,11 +1,11 @@
 from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
-
+import time
 import torch
 import torch.optim as optim
 from torchvision import transforms, models
-
+start_time=time.time()
 vgg = models.vgg19(pretrained=True).features
 
 for param in vgg.parameters():
@@ -136,3 +136,4 @@ for ii in range(1, steps + 1):
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
 ax1.imshow(im_convert(content))
 ax2.imshow(im_convert(target))
+print("Time Taken : ",start_time-time.time())
